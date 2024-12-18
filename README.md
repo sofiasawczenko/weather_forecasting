@@ -62,7 +62,31 @@ To run this project, you will need the following Python packages:
 - matplotlib
 - jupyter
 
-You can install the required packages using the following:
+**You can install the required packages using the following:**
 
 ```bash
 pip install pandas scikit-learn matplotlib jupyter
+```
+
+## Conclusion
+
+### Model Accuracy:
+- The Mean Absolute Error (MAE) for the model is approximately 5.14 (initial evaluation) and 4.79 (after incorporating rolling and averaging features). This indicates the average difference between the predicted and actual temperatures is about 5.14°F and 4.79°F, respectively.
+- Mean Squared Error (MSE) for the refined model is approximately 37.62, which quantifies the average squared difference between actual and predicted temperatures.
+
+### Prediction Quality:
+- The largest prediction errors occur on specific dates, with some of the highest discrepancies recorded on March 26, 2007, where the model predicted 49.74°F compared to the actual temperature of 78°F, resulting in a 28.26°F error.
+- Other significant prediction errors were observed on January 2, 1999, March 26, 1998, and April 18, 1985, where errors in predictions were in the range of 26-30°F.
+
+### Feature Importance:
+- From the model's coefficients, it is evident that `tmax` (maximum temperature) and `tmin` (minimum temperature) are the most influential predictors in the model, with `tmax` having a coefficient of 0.447 and `tmin` with 0.517.
+- The precipitation (`prcp`) and snow depth (`snow`, `snwd`) also influence the predictions, but their impact is lower compared to the temperature variables.
+
+### Improvement Through Features:
+- The model's performance improved after adding rolling averages for temperature and precipitation over different horizons (3-day, 14-day).
+- Additionally, monthly and daily averages for temperature and precipitation significantly contributed to enhancing the model's ability to predict more accurately.
+
+### Overall Insights:
+- The model provides reasonable forecasts with an MAE below 5°F, and the accuracy improves when adding smoothing features like rolling and moving averages.
+- Specific weather anomalies (such as abrupt changes in temperature) still pose challenges for the model, but overall, it performs well for general forecasting with a focus on the maximum temperature as the key predictor.
+
